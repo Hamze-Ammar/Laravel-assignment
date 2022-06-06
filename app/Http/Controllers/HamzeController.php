@@ -91,7 +91,23 @@ class HamzeController extends Controller{
         return $result;
     }
 
-    
+    // API that returns a random beer recipe from the returned list of this API
+    public function getBeerRecipe(){
+        //echo "getBeerRecipe";
+        $curl = curl_init();
+        $url="https://api.punkapi.com/v2/beers";
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl,CURLOPT_CONNECTTIMEOUT, 4);
+        $json = curl_exec($curl);
+        if(!$json) {
+            echo curl_error($curl);
+        }
+        curl_close($curl);
+        $jsonArray = json_decode($json,true);
+
+        echo $jsonArray[0]["ingredients"];
+    }
 
 }
 

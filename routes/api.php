@@ -10,5 +10,7 @@ Route::get('/countSeconds', [HamzeController::class, 'countSeconds'])->name("cou
 Route::get('/groudStudents', [HamzeController::class, 'groudStudents'])->name("groudStudents");
 Route::get('/nominee', [HamzeController::class, 'nominee'])->name("nominee");
 Route::get('/fetchTextApi', [HamzeController::class, 'fetchTextApi'])->name("fetchTextApi");
+Route::get('/getBeerRecipe', [HamzeController::class, 'getBeerRecipe'])->name("getBeerRecipe");
+
 
 
