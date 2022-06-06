@@ -106,7 +106,8 @@ class HamzeController extends Controller{
         curl_close($curl);
         $jsonArray = json_decode($json,true);
 
-        echo $jsonArray[0]["ingredients"];
+        $result= $jsonArray[rand(0, count($jsonArray)-1)]['ingredients'];
+        return $result;
     }
 
 }
