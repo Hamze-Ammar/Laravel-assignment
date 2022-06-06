@@ -43,16 +43,30 @@ class HamzeController extends Controller{
 
     // group students by two
     public function groudStudents(){
-        $students = array("jad", "ahmad", "joe", "ali", "reem", "farah", "lara", "moe");
+        $students = array("jad", "ahmad", "joe", "ali", "reem", "farah", "lara", "moe", "Georges");
         $output = array();
 
         for ($i=0; $i<count($students); $i+=2){
             
+            if ($i==count($students)-1 && ( count($students)%2==1) ){
+                $res = array($students[$i] );
+                array_push($output, $res);
+                break;      
+            }
+
             $res = array($students[$i], $students[$i+1]);
             array_push($output, $res);
         }
         print_r($output) ;
         print_r(count($output));
     }
+
+    // API that takes an array of students and chooses one random nominee
+    public function nominee(){
+        $students = array("jad", "ahmad", "joe", "ali", "reem", "farah", "lara", "moe", "Georges");
+        $num = rand(0, count($students)-1);
+        echo "nominee is: ", $students[$num];
+    }
+
 }
 
