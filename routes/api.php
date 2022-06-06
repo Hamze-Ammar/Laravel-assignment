@@ -9,4 +9,6 @@ Route::get('/countPalindromes', [HamzeController::class, 'countPalindromes'])->n
 Route::get('/countSeconds', [HamzeController::class, 'countSeconds'])->name("countSeconds");
 Route::get('/groudStudents', [HamzeController::class, 'groudStudents'])->name("groudStudents");
 Route::get('/nominee', [HamzeController::class, 'nominee'])->name("nominee");
+Route::get('/fetchTextApi', [HamzeController::class, 'fetchTextApi'])->name("fetchTextApi");
+
 

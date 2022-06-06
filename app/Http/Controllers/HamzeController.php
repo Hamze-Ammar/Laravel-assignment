@@ -68,5 +68,30 @@ class HamzeController extends Controller{
         echo "nominee is: ", $students[$num];
     }
 
+    // API that calls this API and outputs only the "text" field from the response
+    public function fetchTextApi(){
+        $curl = curl_init();
+        $url="https://icanhazdadjoke.com/slack";
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl,CURLOPT_CONNECTTIMEOUT, 4);
+        $json = curl_exec($curl);
+        if(!$json) {
+            echo curl_error($curl);
+        }
+        curl_close($curl);
+        $jsonArray = json_decode($json,true);
+        $key = "attachments";
+        $inner_arr = $jsonArray[$key];
+        $first_element=reset($inner_arr);
+        $string=json_encode($first_element,true);
+        $array=json_decode($string,true);
+        $key2 = "text";
+        $result = $array[$key2];
+        return $result;
+    }
+
+    
+
 }
 
